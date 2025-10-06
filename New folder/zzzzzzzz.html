@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tap & Earn — Firebase Demo</title>
+  <style>
+  :root{--bg:#0b0c10;--card:#11141a;--accent:#ff9f43;--text:#e6eef8}
+  *{box-sizing:border-box}
+
+  .userBox {
+    background: #007bff;  /* නීල background */
+    color: #000;          /* 🟢 අකුරු කලු */
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+  }
+</style>
+
+
+  <style>
+    :root{--bg:#0b0c10;--card:#11141a;--accent:#ff9f43;--text:#e6eef8}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+    .app{width:100%;max-width:920px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{font-weight:700;font-size:1.2rem}
+    nav{display:flex;gap:8px}
+    nav button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
+    nav button.active{background:var(--accent);color:#111}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;margin-top:14px}
+    .grid{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{flex:1;min-width:170px;background:#12141a;padding:14px;border-radius:10px;text-align:center}
+    .stat h4{margin:0;font-size:0.85rem;color:#cbd5e1}
+    .stat p{margin:8px 0 0;font-weight:800;font-size:1.4rem}
+    .tapBtn{padding:18px;border-radius:12px;border:none;background:linear-gradient(90deg,#ff9f43,#ff6b6b);color:#111;font-weight:800;font-size:1.1rem;cursor:pointer}
+    .small{font-size:0.9rem;color:#9aa7bf}
+    .bonusBox{margin-top:14px;padding:12px;background:#1d232f;border-radius:10px;text-align:center}
+    .bonusBox button{margin-top:10px;padding:10px 14px;background:#ff9f43;border:none;border-radius:8px;font-weight:700;cursor:pointer;color:#111}
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6)}
+    .modalBox{background:var(--card);padding:18px;border-radius:12px;width:340px}
+    .modalBox input{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+    .modalRow{display:flex;gap:8px}
+    .btn{padding:10px;border-radius:8px;border:none;background:var(--accent);color:#111;font-weight:700;cursor:pointer;flex:1}
+    .link{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:8px;color:var(--text);cursor:pointer}
+    footer{margin-top:18px;color:#8f9fb6;font-size:0.9rem;text-align:center}
+
+    @media(max-width:720px){ .grid{flex-direction:column} }
+    #homePage {
+      background-image: url('https://static.biswap.org/blog/1719581643854.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; 
+      align-items: center;
+      text-align: center;
+      border-radius: 12px;
+      padding: 20px;
+      color: #fff;
+    }
+    #homePage p {
+      font-size: 1.2rem; 
+      font-weight: 700;  
+      line-height: 1.5;
+      background: rgba(0,0,0,0.65);
+      padding: 12px 16px;
+      border-radius: 10px;
+    }
+
+    #dashboardPage {
+      background-image: url('https://t3.ftcdn.net/jpg/00/86/56/12/360_F_86561234_8HJdzg2iBlPap18K38mbyetKfdw1oNrm.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    /* Ads Grid */
+    .ads-grid{display:grid;gap:12px;margin:16px 0}
+    .ads-top{grid-template-columns:repeat(3,1fr)}
+    .ads-bottom{grid-template-columns:repeat(3,1fr)}
+    .ad-box{background:#fff;color:#000;border-radius:8px;min-height:90px;display:flex;align-items:center;justify-content:center;font-size:0.9rem}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand"></div>
+      <nav id="nav" style="display:none">
+        <button id="dashBtn" class="active">Dashboard</button>
+        <button id="tapNavBtn">Tap & Earn</button>
+        <button id="tapNavBtn">withdrawal</button>
+        <button id="logoutBtn" style="display:none">Logout</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Home Page -->
+<section id="homePage" class="card">
+  <h2 style="color:#000; font-size:2rem; font-weight:800;">
+    Welcome to Tap & Earn 🚀
+  </h2>
+  <p><script type='text/javascript' src='//pl27784168.revenuecpmgate.com/10/e3/db/10e3db71113c373208dfae0fec55a1dc.js'></script></p>
+
+
+
+
+
+
+
+
+
+
+
+
+        </p>.</p>
+       
+        <div style="margin-top:15px">
+          <button id="openSignup" class="btn">Sign Up</button>
+          <button id="openLogin" class="link">Login</button>
+        </div>
+        <div style="text-align:center;margin-top:15px;">
+          <div class="userBox">👥 Total Users: 1M+</div>
+          <div class="userBox">💰 Total Payout: 576M</div>
+        </div>
+        <!-- AD 1 -->
+        <div style="margin-top:20px">
+          <script async data-cfasync="false" src="//pl27784442.revenuecpmgate.com/9c0ab6594455c5e099258a5774ed2f71/invoke.js"></script>
+          <div id="container-9c0ab6594455c5e099258a5774ed2f71"></div>
+        </div>
+      </section>
+      
+
+      <!-- Dashboard Page -->
+      <section id="dashboardPage" class="card" style="display:none">
+        <h3 id="welcomeUser">Dashboard</h3>
+
+        <!-- ✅ Top Ads (3) -->
+        <div class="ads-grid ads-top">
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '1c8b101140f2f29950a7856383c474e9',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/1c8b101140f2f29950a7856383c474e9/invoke.js"></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '1c8b101140f2f29950a7856383c474e9',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/1c8b101140f2f29950a7856383c474e9/invoke.js"></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '1c8b101140f2f29950a7856383c474e9',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/1c8b101140f2f29950a7856383c474e9/invoke.js"></script></div>
+          
+<!-- ✅ Get More Points link -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="your-points-page.html" 
+     style="display:inline-block;padding:10px 16px;background:#ff9f43;
+            color:#111;font-weight:700;border-radius:8px;text-decoration:none;">
+     👉 Get More Points
+  </a>
+</div>
+        </div>
+
+        <div id="bonusBox" class="bonusBox" style="display:none">
+          🎁 Welcome Bonus Available! <br>
+          Claim 1000 Points now.
+          <button id="claimBonusBtn">Claim Bonus</button>
+        </div>
+        <div class="grid">
+          <div class="stat"><h4>Points</h4><p id="pointsDisplay">0</p></div>
+          <div class="stat"><h4>Balance (USD)</h4><p id="balanceDisplay">$0.000</p></div>
+          <div class="stat"><h4>Taps Today</h4><p id="tapsDisplay">0</p></div>
+        </div>
+
+        <!-- AD 2 -->
+        <div style="margin-top:20px;text-align:center">
+          <script type='text/javascript' src='//pl27784168.revenuecpmgate.com/10/e3/db/10e3db71113c373208dfae0fec55a1dc.js'></script>
+        </div>
+
+        <!-- ✅ Bottom Ads (6) -->
+        <h3 style="margin-top:25px">Sponsored Ads</h3>
+        <div class="ads-grid ads-bottom">
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '00e58904bdc7c99379571730c3c2c394',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 68,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/00e58904bdc7c99379571730c3c2c394/invoke.js"></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 30,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script></div>
+          <div class="ad-box"><script type='text/javascript' src='//pl27784168.revenuecpmgate.com/10/e3/db/10e3db71113c373208dfae0fec55a1dc.js'></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script></div>
+          <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script></div>
+           <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '1c8b101140f2f29950a7856383c474e9',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/1c8b101140f2f29950a7856383c474e9/invoke.js"></script></div>
+              <div class="ad-box"><script type="text/javascript">
+	atOptions = {
+		'key' : '712fa60b0c29e783d12ee5cacb8a01df',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/712fa60b0c29e783d12ee5cacb8a01df/invoke.js"></script></div>
+                 <div class="ad-box">Bottom Ad 7</div>
+<!-- ✅ Get More Points link -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="your-points-page.html" 
+     style="display:inline-block;padding:10px 16px;background:#ff9f43;
+            color:#111;font-weight:700;border-radius:8px;text-decoration:none;">
+     👉 Get More Points
+  </a>
+  
+<!-- ✅ Get More Points link -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="your-points-page.html" 
+     style="display:inline-block;padding:10px 16px;background:#ff9f43;
+            color:#111;font-weight:700;border-radius:8px;text-decoration:none;">
+     👉 Get More Points
+  </a>
+  
+<!-- ✅ Get More Points link -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="your-points-page.html" 
+     style="display:inline-block;padding:10px 16px;background:#ff9f43;
+            color:#111;font-weight:700;border-radius:8px;text-decoration:none;">
+     👉 Get More Points
+  </a>
+</div>
+
+<!-- ✅ Get More Points link -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="your-points-page.html" 
+     style="display:inline-block;padding:10px 16px;background:#ff9f43;
+            color:#111;font-weight:700;border-radius:8px;text-decoration:none;">
+     👉 Get More Points
+  </a>
+</div>
+</div>
+</div>
+        </div>
+      </section>
+
+      <!-- Tap Page -->
+      <section id="tapPage" class="card" style="display:none;text-align:center">
+        <h3>Tap & Earn</h3>
+        <p class="small">Click the button to earn points (1 tap = 1 point).</p>
+        <div style="margin-top:16px">
+          <button id="tapBtn" class="tapBtn">TAP +1</button>
+        </div>
+      </section>
+    </main>
+    
+
+    <footer  class="small">
+  <h4 style="color:#ff9f43; margin-bottom:8px;">📢 Important Notice</h4>
+  <p>Tap the button and earn money: Every tap gives you points. 100 Points =0.10.</p>
+  <p>Sign up or Login to start earning points by tapping.<br>👉 Each Tap = 1 Point.<br>👉 1000 Points = $0.1 balance.</p>
+   <p>Minimum withdrawal is $10, and you will receive the payment within 10 minutes.  
+Your daily earnings depend on the number of taps you make each day.</p>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'd6e64e00a74073c0d0c0aae549bdd870',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/d6e64e00a74073c0d0c0aae549bdd870/invoke.js"></script>
+</footer>
+
+    </footer>
+  </div>
+
+  <!-- AUTH Modal -->
+  <div id="authModal" class="modal" style="display:none">
+    <div class="modalBox">
+      <h3 id="authTitle">Sign up</h3>
+      <input id="authUsername" type="text" placeholder="Username (only for signup)" />
+      <input id="authEmail" type="email" placeholder="Email" />
+      <input id="authPassword" type="password" placeholder="Password" />
+      <div class="modalRow">
+        <button id="doAuth" class="btn">Continue</button>
+        <button id="closeAuth" class="link">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ AD 3 -->
+  <script type='text/javascript' src='//pl27784438.revenuecpmgate.com/eb/ed/c4/ebedc4ef55ad07fa5ecefd228d151659.js'></script>
+
+  <!-- Firebase Script (unchanged) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getDatabase, ref, set, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD4d1ZVhgT9_w0tGrpZpmh-tZm6j62LVOw",
+      authDomain: "int-add.firebaseapp.com",
+      databaseURL: "https://int-add-default-rtdb.firebaseio.com",
+      projectId: "int-add",
+      storageBucket: "int-add.firebasestorage.app",
+      messagingSenderId: "849127917891",
+      appId: "1:849127917891:web:75042754d4251e10a447f6",
+      measurementId: "G-9N6X1YZBYE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    const dashBtn=document.getElementById('dashBtn');
+    const tapNavBtn=document.getElementById('tapNavBtn');
+    const logoutBtn=document.getElementById('logoutBtn');
+
+    const homePage=document.getElementById('homePage');
+    const dashboardPage=document.getElementById('dashboardPage');
+    const tapPage=document.getElementById('tapPage');
+    const bonusBox=document.getElementById('bonusBox');
+    const claimBonusBtn=document.getElementById('claimBonusBtn');
+
+    const openSignup=document.getElementById('openSignup');
+    const openLogin=document.getElementById('openLogin');
+
+    const authModal=document.getElementById('authModal');
+    const authTitle=document.getElementById('authTitle');
+    const authUsername=document.getElementById('authUsername');
+    const authEmail=document.getElementById('authEmail');
+    const authPassword=document.getElementById('authPassword');
+    const doAuth=document.getElementById('doAuth');
+    const closeAuth=document.getElementById('closeAuth');
+
+    const pointsDisplay=document.getElementById('pointsDisplay');
+    const balanceDisplay=document.getElementById('balanceDisplay');
+    const tapsDisplay=document.getElementById('tapsDisplay');
+    const tapBtn=document.getElementById('tapBtn');
+    const welcomeUser=document.getElementById('welcomeUser');
+
+    let mode="signup"; let currentUser=null; let userRef=null;
+
+    function show(page){
+      homePage.style.display=(page==='home')?'':'none';
+      dashboardPage.style.display=(page==='dashboard')?'':'none';
+      tapPage.style.display=(page==='tap')?'':'none';
+      [dashBtn,tapNavBtn].forEach(b=>b.classList.remove('active'));
+      if(page==='dashboard') dashBtn.classList.add('active');
+      if(page==='tap') tapNavBtn.classList.add('active');
+    }
+
+    dashBtn.addEventListener('click',()=>show('dashboard'));
+    tapNavBtn.addEventListener('click',()=>show('tap'));
+    logoutBtn.addEventListener('click',()=>signOut(auth));
+
+    openSignup.addEventListener('click',()=>{
+      mode="signup"; authTitle.textContent="Sign Up";
+      authUsername.style.display='block'; authModal.style.display='flex';
+    });
+    openLogin.addEventListener('click',()=>{
+      mode="login"; authTitle.textContent="Login";
+      authUsername.style.display='none'; authModal.style.display='flex';
+    });
+    closeAuth.addEventListener('click',()=>authModal.style.display='none');
+
+    doAuth.addEventListener('click',async()=>{
+      const email=authEmail.value.trim(); const pw=authPassword.value; const uname=authUsername.value.trim();
+      if(!email||!pw){alert("Enter email and password");return;}
+      try{
+        if(mode==="signup"){
+          if(!uname){alert("Enter username");return;}
+          const cred=await createUserWithEmailAndPassword(auth,email,pw);
+          await set(ref(db,'users/'+cred.user.uid),{username:uname,points:0,balance:0,tapsToday:0,welcomeBonusClaimed:false});
+        } else {
+          await signInWithEmailAndPassword(auth,email,pw);
+        }
+        authModal.style.display='none';
+      }catch(err){alert("Invalid email or password. Try again.");}
+    });
+
+    onAuthStateChanged(auth,user=>{
+      if(user){
+        currentUser=user; userRef=ref(db,'users/'+user.uid);
+        homePage.style.display='none'; show('dashboard');
+        logoutBtn.style.display='inline-block'; document.getElementById('nav').style.display='flex';
+
+        onValue(userRef,snap=>{
+          const v=snap.val()||{};
+          pointsDisplay.textContent=v.points??0;
+          balanceDisplay.textContent='$'+(Number(v.balance??0)).toFixed(3);
+          tapsDisplay.textContent=v.tapsToday??0;
+          welcomeUser.textContent="Hi, "+(v.username||"User");
+          bonusBox.style.display=(v.welcomeBonusClaimed===false)?'block':'none';
+        });
+      } else {
+        currentUser=null; document.getElementById('nav').style.display='none';
+        logoutBtn.style.display='none'; show('home');
+      }
+    });
+
+    claimBonusBtn.addEventListener('click',async()=>{
+      if(!currentUser) return;
+      await runTransaction(userRef,(data)=>{
+        if(data && data.welcomeBonusClaimed===false){
+          data.points+=1000; data.balance=Number((data.points*0.001).toFixed(6)); data.welcomeBonusClaimed=true;
+        }
+        return data;
+      });
+    });
+
+    tapBtn.addEventListener('click',async()=>{
+      if(!currentUser){alert('Please login first');return;}
+      await runTransaction(userRef,(d)=>{
+        if(d===null){return {username:"User",points:1,balance:0.001,tapsToday:1,welcomeBonusClaimed:true};}
+        else{d.points=(d.points||0)+1; d.tapsToday=(d.tapsToday||0)+1; d.balance=Number((d.points*0.001).toFixed(6)); return d;}
+      });
+    });
+    
+  </script>
+</body>
+</html>
